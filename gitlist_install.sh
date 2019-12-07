@@ -14,10 +14,8 @@ apt-get install apache2 libapache2-mod-php
 a2enmod rewrite
 service apache2 restart
 echo "<VirtualHost *:80> ServerAdmin git@localhost DocumentRoot /var/www/gitrepo/
-
     <Directory "/var/www/gitrepo/">
             DirectoryIndex index.php index.html
-
             Options FollowSymLinks
             AllowOverride All
     </Directory>
