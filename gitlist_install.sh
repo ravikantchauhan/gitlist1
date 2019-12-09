@@ -21,7 +21,8 @@ echo "<VirtualHost *:80> ServerAdmin git@localhost DocumentRoot /var/www/gitrepo
     </Directory>
 
     ErrorLog /var/www/gitrepo/error.log
-    CustomLog /var/www/gitrepo/access.log combined " >>  /etc/apache2/sites-available/gitlist.conf
+    CustomLog /var/www/gitrepo/access.log combined 
+    </VirtualHost>" >>  /etc/apache2/sites-available/gitlist.conf
     mkdir -p /var/www/gitrepo/
     a2ensite gitlisttest.conf
     service apache2 reload
