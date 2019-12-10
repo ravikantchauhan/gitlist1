@@ -13,25 +13,26 @@ git --versionl
 apt-get install apache2 libapache2-mod-php
 a2enmod rewrite
 service apache2 restart
-echo "<VirtualHost *:80> ServerAdmin git@localhost DocumentRoot /var/www/gitrepo/
-    <Directory "/var/www/gitrepo/">
+echo "<VirtualHost *:80> ServerAdmin git@localhost 
+        DocumentRoot /var/www/git/
+       <Directory "/var/www/git/">
             DirectoryIndex index.php index.html
             Options FollowSymLinks
             AllowOverride All
     </Directory>
 
-    ErrorLog /var/www/gitrepo/error.log
-    CustomLog /var/www/gitrepo/access.log combined 
-    </VirtualHost>" >>  /etc/apache2/sites-available/gitlist.conf
-    mkdir -p /var/www/gitrepo/
-    a2ensite gitlisttest.conf
+    ErrorLog /var/www/git/error.log
+    CustomLog /var/www/git/access.log combined 
+    </VirtualHost>" >>  /etc/apache2/sites-available/git.conf
+    mkdir -p /var/www/git/
+    a2ensite git.conf
     service apache2 reload
-    cd /var/www/gitrepo/
+    cd /var/www/git/
     wget  https://github.com/klaussilveira/gitlist/releases/download/1.0.2/gitlist-1.0.2.tar.gz
     tar zxvf gitlist-1.0.2.tar.gz
     cd /var/www/
-    chown -R www-data:www-data  gitrepo
-    cd /var/www/gitrepo/gitlist/
+    chown -R www-data:www-data  git
+    cd /var/www/git/gitlist/
     mkdir cache
     chmod 777 cache
     cp config.ini-example config.ini
